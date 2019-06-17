@@ -27,8 +27,8 @@ public:
 	}
 	bool intersects(Circle circle, Vector2* i, Vector2* R);
 	Vector2 closestPoint(Vector2& point);
-	Vector2 origin = {1, 720};
-	Vector2 direction = {1, 0};
+	Vector2 origin;
+	Vector2 direction;
 	float length = 1400;
 };
 

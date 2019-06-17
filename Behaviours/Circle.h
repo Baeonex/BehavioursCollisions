@@ -6,9 +6,9 @@
 #include <Renderer2D.h>
 #include <Texture.h>
 #include <assert.h>
-
+#include "Behaviours.h"
 //class circle, used to create circles that is used in the app to do collisions
-class Circle : public SceneObject
+class Circle : public SceneObject, public Behaviours
 {
 public:
 	Circle();
