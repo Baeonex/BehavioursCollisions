@@ -26,7 +26,7 @@ float Plane::distanceTo(const Vector2& p)
 {
 	return p.dot(m_normal) + m_d;
 }
-Vector2 Plane::closestPoint(Vector2& p)
+Vector2 Plane::closestPoint(Vector2 p)
 {
 	return p - m_normal * distanceTo(p);
 }
@@ -45,7 +45,6 @@ void Plane::collRes(Circle& circle)
 	Vector2 reflected;
 	reflected = 2 * m_normal * (m_normal.dot(circle.m_velocity));
 	circle.m_velocity -= reflected;
-
 }
 ePlaneResult Plane::testSide(const Circle& circle)
 {

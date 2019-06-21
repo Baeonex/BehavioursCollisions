@@ -30,7 +30,7 @@ public:
 	//Vector2 closestPoint(Vector2& p), finds the point on the plane which is closest to the parameter point
 	//input:Vector2& p, the reference point
 	//output:a point on the plane which is closest to the reference point
-	Vector2 closestPoint(Vector2& p);
+	Vector2 closestPoint(Vector2 p);
 	//ePlaneResult testSide(const Vector2& p), checks the side the point is on in reference to the plane
 	//input:const Vector2& p, the point that is being checked what sied it is on 
 	//output: the enum ePlaneResult, if it is back behind or intersecting on the plane 

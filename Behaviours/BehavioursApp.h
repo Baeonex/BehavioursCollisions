@@ -5,6 +5,7 @@
 #include "Circle.h"
 #include "Plane.h"
 #include "MathLib4.h"
+#include "Ray.h"
 
 class BehavioursApp : public aie::Application {
 public:
@@ -29,6 +30,9 @@ protected:
 	Plane borderBottom;
 	Plane borderLeft;
 	Plane borderRight;
+	Ray detectionRay;
+	Vector2 place;
+	Vector2 dir;
 	int height, width; //width of window
 
 };
