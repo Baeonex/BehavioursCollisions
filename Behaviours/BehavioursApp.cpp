@@ -20,7 +20,7 @@ bool BehavioursApp::startup() {
 	m_font = new aie::Font("../bin/font/consolas.ttf", 32);
 	alpha.m_center = { 600,600 };
 	beta.m_center = { 400,400 };
-	alpha.m_velocity = { 100,200 };
+	alpha.m_velocity = { -200,200 };
 	beta.m_velocity = { 100,-200 };
 	alpha.m_radius = 20;
 	beta.m_radius = 20;
@@ -44,7 +44,7 @@ void BehavioursApp::borderLengths()
 	height = aie::Application::getWindowHeight(); // stores the current height of the window
 	width = aie::Application::getWindowWidth(); // stores the current width of the window
 	//set the positions of the planes to their corresponding side
-	borderLeft = { 1,0, 0 };
+	borderLeft = { 1,0,0 };
 	borderRight = { -1,0, (float)width };
 	borderTop = { 0, -1, (float)height };
 	borderBottom = { 0, 1, 0 };
@@ -76,7 +76,7 @@ void BehavioursApp::update(float deltaTime) {
 		alpha.m_velocity.x = alpha.m_velocity.x - avoidanceForce.x * deltaTime;
 		alpha.m_velocity.y = alpha.m_velocity.y - avoidanceForce.y * deltaTime;
 	}
-	/*
+	
 	if (detectionRay.intersects(borderRight))
 	{
 		float distance = borderRight.distanceTo(alpha.m_center);
@@ -85,8 +85,8 @@ void BehavioursApp::update(float deltaTime) {
 		alpha.m_velocity.x = alpha.m_velocity.x - avoidanceForce.x * deltaTime;
 		alpha.m_velocity.y = alpha.m_velocity.y - avoidanceForce.y * deltaTime;
 	}
-	*/
-	/*
+	
+	
 	if (detectionRay.intersects(borderTop))
 	{
 		float distance = borderTop.distanceTo(alpha.m_center);
@@ -96,7 +96,7 @@ void BehavioursApp::update(float deltaTime) {
 		alpha.m_velocity.y = alpha.m_velocity.y - avoidanceForce.y * deltaTime;
 		
 	}
-	*/
+	
 	
 	if (detectionRay.intersects(borderBottom))
 	{

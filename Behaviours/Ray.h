@@ -27,7 +27,7 @@ public:
 		return max(a, max(b, t));
 	}
 	bool intersects(Circle circle, Vector2* i, Vector2* R);
-	bool intersects(Plane& plane, Vector2* I = nullptr) {
+	bool intersects(Plane plane, Vector2* I = nullptr) {
 		// project ray direction onto plane normal
 		// this should give us a value between -1 and 1
 		float t = direction.dot(plane.m_normal);
