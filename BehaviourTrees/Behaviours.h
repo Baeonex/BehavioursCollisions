@@ -5,13 +5,15 @@
 #include "Sequence.h"
 #include "Input.h"
 #include "Agent.h"
+#include "MathLib4.h"
 
+/*
 class MouseCloseCondition : public Behaviour
 {
 public:
 	virtual Status update(Agent* agent, float deltaTime)
 	{
-		Input* in = Input::GetSingleton();
+		aie::Input* in = aie::Input::GetSingleton();
 		int x, y;
 		in->GetMouseXY(&x, &y);
 
@@ -21,6 +23,25 @@ public:
 			return BH_SUCCESS;
 
 		return BH_FAILURE;
+	}
+};
+*/
+class FleeAction : public Behaviour
+{
+	virtual Status update(Agent* agent, float deltaTime)
+	{
+		if (agent->m_status == BH_ALPHA)
+		{
+			Vector2 runVector;
+			Vector2 force;
+			Agent* target = agent->m_target;
+			runVector = runVector.normalise(agent->m_position - target->m_position) * agent->m_maxSpeed;
+			force = runVector - agent->m_velocity;
+			agent->m_velocity = agent->m_velocity + force * deltaTime;
+			agent->m_position = agent->m_position + agent->m_velocity * deltaTime;
+		}
+		else
+			return BH_FAILURE;
 	}
 };
 
@@ -46,14 +67,13 @@ class SeekAction : public Behaviour
 {
 	virtual Status update(Agent* agent, float deltaTime)
 	{
-		Input* in = Input::GetSingleton();
-		int x, y;
-		in->GetMouseXY(&x, &y);
-		glm::vec2 mouse(x, y);
-
-		glm::vec2 direction = mouse - agent->m_position;
-
-		agent->m_acceleration = glm::normalize(direction) * agent->m_maxSpeed * deltaTime;
+		Vector2 followVector;
+		Vector2 force;
+		Agent* target = agent->m_target;
+		followVector = followVector.normalise(target->m_position - agent->m_position) * agent->m_maxSpeed;
+		force = followVector - agent->m_velocity;
+		agent->m_velocity = agent->m_velocity + force * deltaTime;
+		agent->m_position = agent->m_position + agent->m_velocity * deltaTime;
 
 		return BH_SUCCESS;
 	}

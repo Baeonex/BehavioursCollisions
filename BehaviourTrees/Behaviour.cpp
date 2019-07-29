@@ -8,7 +8,7 @@ Status Behaviour::tick(Agent* agent, float deltaTime)
 	m_eStatus = update(agent, deltaTime);
 
 	if (m_eStatus != BH_RUNNING)
-		OnTerminate(m_eStatus);
+		onTerminate(m_eStatus);
 	return m_eStatus;
 }
 
@@ -19,7 +19,7 @@ void Behaviour::reset()
 
 void Behaviour::abort()
 {
-	OnTerminate(BH_ABORTED);
+	onTerminate(BH_ABORTED);
 	m_eStatus = BH_ABORTED;
 }
 

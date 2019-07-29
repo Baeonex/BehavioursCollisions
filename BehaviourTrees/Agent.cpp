@@ -9,9 +9,9 @@ Agent::Agent(float x, float y)
 	m_maxSpeed = 100;
 	m_texture = new Texture("./textures/redOutline.png");
 	m_attackTexture = new Texture("./textures/redOutline.png");
-
+	m_status = BH_BETA;
 	//behaviour tree construction
-	m_BT = (new Selector())->add(new Sequence())->add(new MouseCloseCondition())->add(new AttackAction())->add((new Sequence())->add(new StopAttackAction())->add(new SeekAction()));
+	m_BT = (new Selector())->add(new FleeAction())->add(new Sequence())->add(new AttackAction())->add((new Sequence())->add(new StopAttackAction())->add(new SeekAction()));
 }
 
 
@@ -48,10 +48,10 @@ void Agent::update(float deltaTime)
 
 }
 
-void Agent::draw(aie::Renderer2D renderer) {
+void Agent::draw(aie::Renderer2D* renderer) {
 	if (!m_bAttack)
-		renderer.drawSprite(m_texture, m_position.x, m_position.y);
+		renderer->drawSprite(m_texture, m_position.x, m_position.y);
 	else
-		renderer.drawSprite(m_attackTexture, m_position.x, m_position.y);
+		renderer->drawSprite(m_attackTexture, m_position.x, m_position.y);
 
 }

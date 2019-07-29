@@ -3,7 +3,7 @@
 
 Sequence::~Sequence()
 {
-	clear()
+	clear();
 }
 
 void Sequence::onInit()

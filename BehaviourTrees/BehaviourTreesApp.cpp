@@ -17,7 +17,8 @@ BehaviourTreesApp::~BehaviourTreesApp() {
 bool BehaviourTreesApp::startup() {
 	
 	m_2dRenderer = new aie::Renderer2D();
-
+	m_target = new Agent(200, 400);
+	m_target->m_status = BH_ALPHA;
 	m_agent = new Agent(200, 200);
 	// TODO: remember to change this when redistributing a build!
 	// the following path would be used instead: "./font/consolas.ttf"
@@ -55,6 +56,8 @@ void BehaviourTreesApp::draw() {
 	m_2dRenderer->begin();
 
 	// draw your stuff here!
+	m_agent->draw(m_2dRenderer);
+	m_target->draw(m_2dRenderer);
 	
 	// output some text, uses the last used colour
 	m_2dRenderer->drawText(m_font, "Press ESC to quit", 0, 0);

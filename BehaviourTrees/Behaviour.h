@@ -3,6 +3,8 @@
 
 enum Status
 {
+	BH_ALPHA,
+	BH_BETA,
 	BH_INVALID,
 	BH_SUCCESS,
 	BH_FAILURE,
@@ -31,6 +33,6 @@ public:
 	Status getStatus() const;
 
 private:
-	Status m_eStatus
+	Status m_eStatus;
 };
 
